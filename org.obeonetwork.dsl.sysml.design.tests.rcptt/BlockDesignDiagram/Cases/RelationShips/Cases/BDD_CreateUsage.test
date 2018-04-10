@@ -1,0 +1,288 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _sD67UDMzEeiRZ4kXU2JqQQ,_dzmbEDNZEeiRZ4kXU2JqQQ,_T3lvoDMyEeiRZ4kXU2JqQQ,_Z_ds0DMyEeiRZ4kXU2JqQQ,_RDvKQDQqEeiRde_P_PIz8w,_-LLTYDQqEeiRde_P_PIz8w
+Element-Name: BDD_CreateUsage
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _O2OT8DcWEeiI5Obnayse1w
+Runtime-Version: 2.2.0.201705230341
+Save-Time: 4/3/18 4:49 PM
+Testcase-Type: ecl
+Verifications: _mOWbgDcXEeiI5Obnayse1w
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Create a Usage in BDD with the tool RelationShips/InterfaceRealization
+Test 1- Create a Usage between two blocks
+Test 2- Create a Usage between block and an Interface
+Test 3- Create a Usage between block and a Datatype
+Test 5- Create a Usage between block and an Enumeration
+Test 6- Create a Usage between block and an Actor
+Test 7- Create a Usage between block and a Unit
+Test 8- Create a Usage between block and a Dimension
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Test 1- Create a Usage between two blocks with tool Relationships/Usage
+with [get-editor "bdd diagram"] {
+    with [get-palette] {
+        with [get-palette-entry Dependencies] {
+            mouse-move 8 14 button1 -height 27 -width 293
+            mouse-press 8 14 button1 -height 27 -width 293
+            mouse-release 8 14 button1 524288 -height 27 -width 293
+        }
+        with [get-palette-entry Usage] {
+            mouse-move 41 15 button1 -height 27 -width 293
+            mouse-press 41 15 button1 -height 27 -width 293
+            mouse-release 41 15 button1 524288 -height 27 -width 293
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "bdd diagram"] {
+        with [get-edit-part -name "«Block»\r\n"
+            + "block1" | get-edit-part -className DNodeListNameEditPart] {
+            mouse-move 23 6 button1 -height 34 -width 63
+            mouse-press 23 6 button1 -height 34 -width 63
+            mouse-release 23 6 button1 524288 -height 34 -width 63
+        }
+        with [get-edit-part -name "«Block»\r\n"
+            + "block2" | get-edit-part -className DNodeListNameEditPart] {
+            mouse-move 20 7 button1 -height 34 -width 63
+            mouse-press 20 7 button1 -height 34 -width 63
+            mouse-release 20 7 button1 524288 -height 34 -width 63
+        }
+    }
+}
+// Check Usage is displayed
+get-editor "bdd diagram" | get-diagram -index 1 | get-edit-part -name "bdd diagram" | get-edit-part -name "«Block»\r\n"
+      + "block2" | get-target-connection -path 0
+
+// Test 2- Create a Usage between block and interface with tool Relationships/Usage
+with [get-editor "bdd diagram"] {
+    with [get-palette] {
+        with [get-palette-entry Dependencies] {
+            mouse-move 8 14 button1 -height 27 -width 293
+            mouse-press 8 14 button1 -height 27 -width 293
+            mouse-release 8 14 button1 524288 -height 27 -width 293
+        }
+        with [get-palette-entry Usage] {
+            mouse-move 41 15 button1 -height 27 -width 293
+            mouse-press 41 15 button1 -height 27 -width 293
+            mouse-release 41 15 button1 524288 -height 27 -width 293
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "bdd diagram"] {
+        with [get-edit-part -name "«Block»\r\n"
+            + "block1"] {
+            mouse-move 93 36 button1 -height 61 -width 111
+            mouse-press 93 36 button1 -height 61 -width 111
+            mouse-release 93 36 button1 524288 -height 61 -width 111
+        }
+        with [get-edit-part -name interface1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 50 17 button1 -height 33 -width 128
+            mouse-press 50 17 button1 -height 33 -width 128
+            mouse-release 50 17 button1 524288 -height 33 -width 128
+        }
+    }
+}
+// Check Usage is displayed
+get-editor "bdd diagram"|get-diagram -index 1 | get-edit-part -name "bdd diagram" | get-edit-part -name "interface1"
+    | get-target-connection -path 0
+
+// Test 3- Create a Usage between block and Datatype with tool Relationships/Usage
+with [get-editor "bdd diagram"] {
+    with [get-palette] {
+        with [get-palette-entry Dependencies] {
+            mouse-move 8 14 button1 -height 27 -width 293
+            mouse-press 8 14 button1 -height 27 -width 293
+            mouse-release 8 14 button1 524288 -height 27 -width 293
+        }
+        with [get-palette-entry Usage] {
+            mouse-move 41 15 button1 -height 27 -width 293
+            mouse-press 41 15 button1 -height 27 -width 293
+            mouse-release 41 15 button1 524288 -height 27 -width 293
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "bdd diagram"] {
+        with [get-edit-part -name "«Block»\r\n"
+            + "block1"] {
+            mouse-move 96 28 button1 -height 61 -width 111
+            mouse-press 96 28 button1 -height 61 -width 111
+            mouse-release 96 28 button1 524288 -height 61 -width 111
+        }
+        with [get-edit-part -name DataType1] {
+            mouse-move 76 23 button1 -height 43 -width 133
+            mouse-press 76 23 button1 -height 43 -width 133
+            mouse-release 76 23 button1 524288 -height 43 -width 133
+        }
+    }
+}
+// Check Usage is displayed
+get-editor "bdd diagram"|get-diagram -index 1 | get-edit-part -name "bdd diagram" | get-edit-part -name "DataType1"
+    | get-target-connection -path 0
+
+// Test 4- Create a Usage between block and ValueType with tool Relationships/Usage
+with [get-editor "bdd diagram"] {
+    with [get-palette] {
+        with [get-palette-entry Dependencies] {
+            mouse-move 8 14 button1 -height 27 -width 293
+            mouse-press 8 14 button1 -height 27 -width 293
+            mouse-release 8 14 button1 524288 -height 27 -width 293
+        }
+        with [get-palette-entry Usage] {
+            mouse-move 41 15 button1 -height 27 -width 293
+            mouse-press 41 15 button1 -height 27 -width 293
+            mouse-release 41 15 button1 524288 -height 27 -width 293
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "bdd diagram"] {
+        with [get-edit-part -name "«Block»\r\n" + "block1"] {
+            mouse-move 96 28 button1 -height 61 -width 111
+            mouse-press 96 28 button1 -height 61 -width 111
+            mouse-release 96 28 button1 524288 -height 61 -width 111
+        }
+        with [get-edit-part -name "«ValueType»\r\n" + "valueType1"] {
+            mouse-move 76 23 button1 -height 43 -width 133
+            mouse-press 76 23 button1 -height 43 -width 133
+            mouse-release 76 23 button1 524288 -height 43 -width 133
+        }
+    }
+}
+
+// Check Usage is displayed
+get-editor "bdd diagram"|get-diagram -index 1 | get-edit-part -name "bdd diagram" | get-edit-part -name "«ValueType»\r\n" 
+    + "valueType1" | get-target-connection -path 0
+    
+// Test 5- Create a Usage between block and Enumeration with tool Relationships/Usage
+
+with [get-editor "bdd diagram"] {
+    with [get-palette] {
+        with [get-palette-entry Dependencies] {
+            mouse-move 8 14 button1 -height 27 -width 293
+            mouse-press 8 14 button1 -height 27 -width 293
+            mouse-release 8 14 button1 524288 -height 27 -width 293
+        }
+        with [get-palette-entry Usage] {
+            mouse-move 41 15 button1 -height 27 -width 293
+            mouse-press 41 15 button1 -height 27 -width 293
+            mouse-release 41 15 button1 524288 -height 27 -width 293
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "bdd diagram"] {
+        with [get-edit-part -name "«Block»\r\n"
+            + "block1"] {
+            mouse-move 16 13 button1 -height 61 -width 111
+            mouse-press 16 13 button1 -height 61 -width 111
+            mouse-release 16 13 button1 524288 -height 61 -width 111
+        }
+        with [get-edit-part -name Enumeration2 -index 1 | get-edit-part -className DNodeListNameEditPart] {
+            mouse-move 48 10 button1 -height 17 -width 99
+            mouse-press 48 10 button1 -height 17 -width 99
+            mouse-release 48 10 button1 524288 -height 17 -width 99
+        }
+    }
+}
+// Check Usage is displayed
+get-editor "bdd diagram"|get-diagram -index 1 | get-edit-part -name "bdd diagram" | get-edit-part -name Enumeration2 -index 1 
+    | get-target-connection -path 0
+    
+// Test 6- Create a Usage between block and Actor with tool Relationships/Usage
+with [get-editor "bdd diagram"] {
+    with [get-palette] {
+        with [get-palette-entry Dependencies] {
+            mouse-move 8 14 button1 -height 27 -width 293
+            mouse-press 8 14 button1 -height 27 -width 293
+            mouse-release 8 14 button1 524288 -height 27 -width 293
+        }
+        with [get-palette-entry Usage] {
+            mouse-move 41 15 button1 -height 27 -width 293
+            mouse-press 41 15 button1 -height 27 -width 293
+            mouse-release 41 15 button1 524288 -height 27 -width 293
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "bdd diagram"] {
+        with [get-edit-part -name "«Block»\r\n" + "block1"] {
+            mouse-move 96 28 button1 -height 61 -width 111
+            mouse-press 96 28 button1 -height 61 -width 111
+            mouse-release 96 28 button1 524288 -height 61 -width 111
+        }
+        with [get-edit-part -name Actor1 | get-edit-part -className WorkspaceImageEditPart] {
+            mouse-move 16 6 button1 -height 52 -width 30
+            mouse-press 16 6 button1 -height 52 -width 30
+            mouse-release 16 6 button1 524288 -height 52 -width 30
+        }
+    }
+}
+// Check Usage is displayed
+
+get-editor "bdd diagram"|get-diagram -index 1 | get-edit-part -name "bdd diagram" | get-edit-part -name "Actor1" | get-target-connection -path 0
+
+// Test 7- Create a Usage between block and Unit with tool Relationships/Usage
+with [get-editor "bdd diagram"] {
+    with [get-palette] {
+        with [get-palette-entry Dependencies] {
+            mouse-move 8 14 button1 -height 27 -width 293
+            mouse-press 8 14 button1 -height 27 -width 293
+            mouse-release 8 14 button1 524288 -height 27 -width 293
+        }
+        with [get-palette-entry Usage] {
+            mouse-move 41 15 button1 -height 27 -width 293
+            mouse-press 41 15 button1 -height 27 -width 293
+            mouse-release 41 15 button1 524288 -height 27 -width 293
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "bdd diagram"] {
+        with [get-edit-part -name "«Block»\r\n" + "block1"] {
+            mouse-move 96 28 button1 -height 61 -width 111
+            mouse-press 96 28 button1 -height 61 -width 111
+            mouse-release 96 28 button1 524288 -height 61 -width 111
+        }
+        with [get-edit-part -name "unit1"] {
+            mouse-move 76 23 button1 -height 43 -width 133
+            mouse-press 76 23 button1 -height 43 -width 133
+            mouse-release 76 23 button1 524288 -height 43 -width 133
+        }
+    }
+}
+// Check Usage is displayed
+get-editor "bdd diagram"|get-diagram -index 1 | get-edit-part -name "bdd diagram" | get-edit-part -name "unit1" | get-target-connection -path 0
+
+// Test 8- Create a Usage between block and Dimension with tool Relationships/Usage
+with [get-editor "bdd diagram"] {
+    with [get-palette] {
+        with [get-palette-entry Dependencies] {
+            mouse-move 8 14 button1 -height 27 -width 293
+            mouse-press 8 14 button1 -height 27 -width 293
+            mouse-release 8 14 button1 524288 -height 27 -width 293
+        }
+        with [get-palette-entry Usage] {
+            mouse-move 41 15 button1 -height 27 -width 293
+            mouse-press 41 15 button1 -height 27 -width 293
+            mouse-release 41 15 button1 524288 -height 27 -width 293
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "bdd diagram"] {
+        with [get-edit-part -name "«Block»\r\n" + "block1"] {
+            mouse-move 96 28 button1 -height 61 -width 111
+            mouse-press 96 28 button1 -height 61 -width 111
+            mouse-release 96 28 button1 524288 -height 61 -width 111
+        }
+        with [get-edit-part -name "dimension1"] {
+            mouse-move 76 23 button1 -height 43 -width 133
+            mouse-press 76 23 button1 -height 43 -width 133
+            mouse-release 76 23 button1 524288 -height 43 -width 133
+        }
+    }
+}
+// Check Usage is displayed
+get-editor "bdd diagram"|get-diagram -index 1 | get-edit-part -name "bdd diagram" | get-edit-part -name "dimension1" | get-target-connection -path 0
+
+// Save Diagram
+get-menu -path "File/Save" | click
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

@@ -1,0 +1,138 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _sD67UDMzEeiRZ4kXU2JqQQ,_dzmbEDNZEeiRZ4kXU2JqQQ,_T3lvoDMyEeiRZ4kXU2JqQQ,_Z_ds0DMyEeiRZ4kXU2JqQQ,_RDvKQDQqEeiRde_P_PIz8w,_-LLTYDQqEeiRde_P_PIz8w
+Element-Name: BDD_CreateAssociation
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _XHjG0DQqEeiRde_P_PIz8w
+Runtime-Version: 2.2.0.201705230341
+Save-Time: 4/3/18 4:30 PM
+Testcase-Type: ecl
+Verifications: _vc0rwDQuEeiRde_P_PIz8w
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Create an Assocition in BDD with the tool RelationShips/Association
+Test 1- Create an association between two blocks
+Test 2- Create association between Block and ValueType
+Test 3- Create association between Block and DataType	
+Test 4- Create association between Block and Enumeration	
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Test 1- Create an association between two blocks with tool Relationships/Association
+with [get-editor "bdd diagram"] {
+    with [get-palette] {
+        with [get-palette-entry Association] {
+            mouse-press 68 20 button1 -height 27 -width 293
+            mouse-release 68 20 button1 524288 -height 27 -width 293
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "bdd diagram"] {
+        with [get-edit-part -name "«Block»\r\n"
+            + "block1" | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 29 0 button1 -height 14 -width 107
+            mouse-press 29 0 button1 -height 14 -width 107
+            mouse-release 29 0 button1 524288 -height 14 -width 107
+        }
+       with [get-edit-part -name "«Block»\r\n"
+            + "block2"] {
+            mouse-move 17 2 button1 -height 70 -width 111
+            mouse-press 17 2 button1 -height 70 -width 111
+            mouse-release  17 2 button1 524288 -height 70 -width 111
+        }
+    }
+}
+// Check association is displayed
+get-editor "bdd diagram" | get-diagram -index 1 | get-edit-part -name "bdd diagram" 
+	| get-edit-part -name "«Block»\r\n" + "block2" | get-target-connection -path 0
+
+// Test 2- Create association between Block and ValueType	
+with [get-editor "bdd diagram"] {
+    with [get-palette | get-palette-entry Association] {
+        mouse-move 44 15 button1 -height 27 -width 293
+        mouse-press 44 15 button1 -height 27 -width 293
+        mouse-release 44 15 button1 524288 -height 27 -width 293
+    }
+    with [get-diagram -index 1 | get-edit-part -name "bdd diagram"] {
+        with [get-edit-part -name "«Block»\r\n"
+            + "block1"] {
+            mouse-move 100 26 button1 -height 61 -width 111
+            mouse-press 100 26 button1 -height 61 -width 111
+            mouse-release 100 26 button1 524288 -height 61 -width 111
+        }
+       with [get-edit-part -name "«ValueType»\r\n"
+            + "valueType1" | get-edit-part -className DNodeListNameEditPart] {
+            mouse-move 14 10 button1 -height 34 -width 91
+            mouse-press 14 10 button1 -height 34 -width 91
+            mouse-release 14 10 button1 524288 -height 34 -width 91
+        }
+    }
+}
+// Check association is displayed
+get-editor "bdd diagram" | get-diagram -index 1 | get-edit-part -name "bdd diagram" 
+    | get-edit-part -name "«ValueType»\r\n" + "valueType1" | get-target-connection -path 0
+
+// Test 3- Create association between Block and DataType	
+with [get-editor "bdd diagram"] {
+    with [get-palette] {
+        with [get-palette-entry Association] {
+            mouse-move 73 20 button1 -height 27 -width 293
+            mouse-press 73 20 button1 -height 27 -width 293
+            mouse-release 73 20 button1 524288 -height 27 -width 293
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "bdd diagram"] {
+        with [get-edit-part -name "«Block»\r\n"
+            + "block1" | get-edit-part -className DNodeListNameEditPart] {
+            mouse-move 36 27 button1 -height 34 -width 63
+            mouse-press 36 27 button1 -height 34 -width 63
+            mouse-release 36 27 button1 524288 -height 34 -width 63
+        }
+        with [get-edit-part -name DataType1 | get-edit-part -className DNodeListNameEditPart] {
+            mouse-move 8 5 button1 -height 17 -width 80
+            mouse-press 8 5 button1 -height 17 -width 80
+            mouse-release 8 5 button1 524288 -height 17 -width 80
+        }
+    }
+}
+// Check association is displayed
+get-editor "bdd diagram" | get-diagram -index 1 | get-edit-part -name "bdd diagram" 
+    | get-edit-part -name "DataType1" | get-target-connection -path 0
+    
+// Test 4- Create association between Block and Enumeration	
+with [get-editor "bdd diagram"] {
+    with [get-palette] {
+        with [get-palette-entry Association] {
+            mouse-move 89 21 button1 -height 27 -width 293
+            mouse-press 89 21 button1 -height 27 -width 293
+            mouse-release 89 21 button1 524288 -height 27 -width 293
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "bdd diagram"] {
+        with [get-edit-part -name "«Block»\r\n"
+            + "block1"] {
+            mouse-move 91 32 button1 -height 61 -width 111
+            mouse-press 91 32 button1 -height 61 -width 111
+            mouse-release 91 32 button1 524288 -height 61 -width 111
+        }
+        with [get-edit-part -name Enumeration2 -index 1
+			| get-edit-part -className DNodeListNameEditPart] {
+            mouse-move 39 3 button1 -height 17 -width 99
+            mouse-press 39 3 button1 -height 17 -width 99
+            mouse-release 39 3 button1 524288 -height 17 -width 99
+        }
+    }
+}
+// Check association is displayed
+get-editor "bdd diagram" | get-diagram -index 1 | get-edit-part -name "bdd diagram"
+	| get-edit-part -name Enumeration2 -index 1 | get-target-connection -path 0
+
+// Save Diagram
+get-button "Save (M1+S)" | click
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

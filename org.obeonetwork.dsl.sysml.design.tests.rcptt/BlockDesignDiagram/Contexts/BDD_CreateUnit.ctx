@@ -1,0 +1,37 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: BDD_CreateUnit
+Element-Type: context
+Element-Version: 2.0
+Id: _NqSAkDN5EeiRZ4kXU2JqQQ
+Runtime-Version: 2.2.0.201705230341
+Save-Time: 3/29/18 7:47 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Create new semantic element using palette tool : Unit
+with [get-editor "bdd diagram"] {
+    with [get-palette] {
+    	with [get-palette-entry Dimension] {
+            mouse-move 6 15 button1 -height 27 -width 293
+            mouse-press 6 15 button1 -height 27 -width 293
+            mouse-release 6 15 button1 524288 -height 27 -width 293
+        }
+    	with [get-palette-entry Unit] {
+            mouse-move 35 14 button1 -height 27 -width 293
+            mouse-press 35 14 button1 -height 27 -width 293
+            mouse-release 35 14 button1 524288 -height 27 -width 293
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "bdd diagram"] {
+       mouse-move 238 402 button1 -height 506 -width 1123
+        mouse-press 238 402 button1 -height 506 -width 1123
+        mouse-release 238 402 button1 524288 -height 506 -width 1123
+    }
+}
+// Verify Graphical element is created in diagram
+get-editor "bdd diagram" | get-diagram -index 1 | get-edit-part -name "bdd diagram" | get-edit-part -name newUnit1
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

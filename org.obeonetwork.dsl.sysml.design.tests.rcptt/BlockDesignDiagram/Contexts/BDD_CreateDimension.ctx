@@ -1,0 +1,33 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: BDD_CreateDimension
+Element-Type: context
+Element-Version: 2.0
+Id: _DwSg0DNyEeiRZ4kXU2JqQQ
+Runtime-Version: 2.2.0.201705230341
+Save-Time: 3/29/18 6:56 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Create new semantic element using palette tool : Block
+with [get-editor "bdd diagram"] {
+    with [get-palette] {
+        with [get-palette-entry Dimension -index 1] {
+            mouse-move 62 11 button1 -height 27 -width 293
+            mouse-press 62 11 button1 -height 27 -width 293
+            mouse-release 62 11 button1 524288 -height 27 -width 293
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "bdd diagram"] {
+        mouse-move 393 454 button1 -height 514 -width 1113
+        mouse-press 393 454 button1 -height 514 -width 1113
+        mouse-release 393 454 button1 524288 -height 514 -width 1113
+    }
+}
+// Verify Graphical element is created in diagram
+get-editor "bdd diagram" | get-diagram -index 1 | get-edit-part -name "bdd diagram" | get-edit-part  -name newDimension1
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

@@ -1,0 +1,38 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: BDD_CreateEnumeration
+Element-Type: context
+Element-Version: 2.0
+Id: _cJcPQDNtEeiRZ4kXU2JqQQ
+Runtime-Version: 2.2.0.201705230341
+Save-Time: 3/29/18 6:44 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Create new semantic element using palette tool : Unit
+with [get-editor "bdd diagram"] {
+    with [get-palette] {
+        with [get-palette-entry "Group DataType"] {
+            mouse-move 10 16 button1 -height 27 -width 293
+            mouse-press 10 16 button1 -height 27 -width 293
+            mouse-release 10 16 button1 524288 -height 27 -width 293
+        }
+        with [get-palette-entry Enumeration] {
+            mouse-move 59 15 button1 -height 27 -width 293
+            mouse-press 59 15 button1 -height 27 -width 293
+            mouse-release 59 15 button1 524288 -height 27 -width 293
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "bdd diagram"] {
+        mouse-move 303 218 button1 -height 417 -width 739
+        mouse-press 303 218 button1 -height 417 -width 739
+        mouse-drag 462 374 button1 524288 -height 417 -width 739
+        mouse-release 462 374 button1 524288 -height 417 -width 739 
+    }
+}
+// Verify Graphical element is created in diagram
+get-editor "bdd diagram" | get-diagram -index 1 | get-edit-part -name "bdd diagram" | get-edit-part -name Enumeration0
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

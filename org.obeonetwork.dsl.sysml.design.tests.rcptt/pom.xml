@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2018 Obeo.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+    Obeo - initial API and implementation
+-->
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.obeonetwork.dsl.sysml</groupId>
+    <artifactId>rcpttTests</artifactId>
+    <version>8.0.0-SNAPSHOT</version>
+    <packaging>rcpttTest</packaging>
+
+	 <pluginRepositories>
+		<pluginRepository>
+			<id>rcptt-releases</id>
+			<name>RCPTT Maven repository</name>
+			<url>https://repo.eclipse.org/content/repositories/rcptt-releases/</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>rcptt-snapshots</id>
+			<name>RCPTT Maven Snapshots repository</name>
+			<snapshots>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+			<url>https://repo.eclipse.org/content/repositories/rcptt-snapshots/</url>
+		</pluginRepository>
+	</pluginRepositories>
+	
+	
+  <!--<pluginRepositories>
+      <pluginRepository>
+          <id>xored</id>
+          <name>Xored Maven repository</name>
+          <url>http://maven.xored.com/nexus/content/repositories/ci4rcptt-snapshots/</url>
+      </pluginRepository>
+
+	  <pluginRepository>
+		<id>rcptt-snapshots</id>
+		<name>RCPTT Maven Snapshots repository</name>
+		<snapshots>
+			<updatePolicy>always</updatePolicy>
+		</snapshots>
+		<url>https://repo.eclipse.org/content/repositories/rcptt-snapshots/</url>
+	  </pluginRepository>
+	  <pluginRepository>
+		<id>rcptt-releases</id>
+		<name>RCPTT Maven repository</name>
+		<url>https://repo.eclipse.org/content/repositories/rcptt-releases/</url>
+	  </pluginRepository>
+  </pluginRepositories>-->
+  
+	
+    <properties>
+        <ci4rcptt-maven-version>1.5.6-SNAPSHOT</ci4rcptt-maven-version>
+        <!-- <base-aut>${aut}</base-aut> -->
+		<!-- utilise un produit Capella windows 64 en local-->
+		<!-- <autPath>../../UML-Designer/packaging/org.obeonetwork.dsl.uml2.product/target/products/UMLDesigner-win32.win32.x86_64.zip</autPath>
+		<autPath>http://download.polarsys.org/capella/core/products/releases/1.2.0-R20171103-050121/capella-1.2.0.201711030906-win32-win32-x86_64.zip</autPath> -->
+		<autPath>../../../Clients/SysmlProject/Capella/capella-1.2.0.201711030906-win32-win32-x86_64.zip</autPath>
+		
+		<!-- Sirius Update site -->
+		<site-sirius> file:/C:/github/SysML-Designer-UI-Tests/sirius </site-sirius>
+		<!-- UML2 Extender sdk Update site -->
+		<site-uml2> file:/C:/github/SysML-Designer-UI-Tests/aa </site-uml2>
+		<!-- UML Designer core Update site -->
+		<site-uml-core>file:/C:/github/UML-Designer/packaging/org.obeonetwork.dsl.uml2.core.update/target/repository </site-uml-core>
+		<!-- SysML Designer Update site -->
+		<site-sysml>file:/C:/github/SysML-Designer/packaging/org.obeonetwork.dsl.sysml.update/target/repository </site-sysml>
+		
+
+		<suite>SysML_Parent</suite>
+
+		<rcpttrunner>../rcptt.runner-2.2.0.zip</rcpttrunner>
+		<rcptt-runner-version>2.2.0</rcptt-runner-version>
+		<rcptt-version>2.2.0</rcptt-version>
+		
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <!-- <groupId>com.xored.ci4rcptt</groupId>
+                <artifactId>ci4rcptt-maven-plugin</artifactId>
+                <version>${ci4rcptt-maven-version}</version>-->
+				<groupId>org.eclipse.rcptt</groupId>
+				<artifactId>rcptt-maven-plugin</artifactId>
+				<version>${rcptt-version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                   	<aut>
+						<groupId>eclipse</groupId>
+						<artifactId>sdk</artifactId>
+						<version>3.7.0</version>
+
+						<injections>
+							<!-- UML2 designer core -->
+							<injection>
+								<site>${site-uml2}</site>
+							</injection>
+							<!-- sirius-->
+							<injection>
+								<site>${site-sirius}</site>
+							</injection>
+							<!-- UML designer core -->
+							<injection>
+								<site>${site-sysml}</site>
+							</injection>
+							<!-- SysML designer -->
+							<injection>
+								<site>${site-uml-core}</site>
+							</injection>
+						</injections>
+
+        				<explicit>${autPath}</explicit>
+						
+						<args>
+							<arg>-autArgs</arg>
+						</args>
+					</aut>
+					
+    				<runner>
+						<version>${rcptt-runner-version}</version>
+       					<!-- version of RCPTT Runner -->
+        				<explicit>${rcpttrunner}</explicit>
+						<vmArgs>
+							<vmArg>-Xmx2g</vmArg>
+						</vmArgs>
+   					</runner>
+					
+    				<suites>
+        				<suite>${suite}</suite>
+    				</suites>
+					
+    				<testOptions>
+    					<execTimeout>7200</execTimeout>
+    					<testExecTimeout>90</testExecTimeout>
+					</testOptions>
+					
+				</configuration>
+      		</plugin>
+  	</plugins>
+  </build>
+
+ 
+</project>

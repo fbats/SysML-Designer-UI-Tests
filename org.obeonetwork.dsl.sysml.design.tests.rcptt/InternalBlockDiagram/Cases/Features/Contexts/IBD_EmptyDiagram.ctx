@@ -1,0 +1,55 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: IBD_EmptyDiagram
+Element-Type: context
+Element-Version: 2.0
+Id: _YjKqsDPyEeiRde_P_PIz8w
+Runtime-Version: 2.2.0.201705230341
+Save-Time: 4/9/18 10:39 AM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Form model explorer create an IBD on the Block1
+/*get-view "Model Explorer" | get-tree | select "test/model.uml/<Model> Model/<<Block>> <Class> block1" | get-menu 
+    -path "New Representation/ibd [block] block1 [block1 diagram]" | click
+with [get-window "New Internal Block Diagram"] {
+    get-editbox -after [get-label "Name:"] | set-text "ibd diagram"
+    get-button OK | click
+}*/
+
+get-view "Model Explorer" | get-tree | select test | get-menu -path Refresh | click
+with [get-view "Model Explorer" | get-tree] {
+    select test | get-menu -path Refresh | click
+    select test | double-click
+    select "*test/model.uml/<Model> Model/<<Block>> <Class> block1" | get-menu 
+    -path "New Representation/ibd [block] block1 [block1 diagram]" | click
+}
+with [get-window "New Internal Block Diagram"] {
+    get-editbox -after [get-label "Name:"] | set-text "ibd diagram"
+    get-button OK | click
+}
+
+// Expand the IBD diagram
+with [get-editor "ibd diagram"] {
+    with [get-diagram -index 1] {
+        with [get-edit-part -name "ibd diagram" | get-edit-part -name "ibd diagram"] {
+            with [get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+                mouse-press 101 25 button1 -height 68 -width 148
+                mouse-release 101 25 button1 524288 -height 68 -width 148
+            }
+        }
+        with [get-figure -path "0/1/0/0"] {
+            mouse-press 156 76 button1 -height 421 -width 743
+        }
+        with [get-edit-part -name "ibd diagram"] {
+            mouse-drag 719 404 button1 524288 -height 421 -width 743
+            mouse-release 719 404 button1 524288 -height 421 -width 743
+        }
+    }
+}
+// Save Diagram
+get-button "Save (M1+S)" | click
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

@@ -1,0 +1,36 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: BDD_EmptyDiagram
+Element-Type: context
+Element-Version: 2.0
+Id: _b0KIUDNYEeiRZ4kXU2JqQQ
+Runtime-Version: 2.2.0.201705230341
+Save-Time: 4/9/18 10:33 AM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+/* this comment will replace the  first block for not capella branch
+get-view "Model Explorer" | get-tree | select "test/model.uml/<Model> Model" | get-menu 
+    -path "New Representation/bdd  [package] Model [Model diagram]" | click
+with [get-window "New Block Definition Diagram"] {
+    get-editbox -after [get-label "Name:"] | set-text "bdd diagram"
+    get-button OK | click
+}
+get-editor "bdd diagram"
+*/
+get-view "Model Explorer" | get-tree | select test | get-menu -path Refresh | click
+with [get-view "Model Explorer" | get-tree] {
+    select test | get-menu -path Refresh | click
+    select test | double-click
+    select "*test/model.uml/<Model> Model" | get-menu -path "New Representation/bdd  [package] Model [Model diagram]" 
+        | click
+}
+with [get-window "New Block Definition Diagram"] {
+    get-editbox -after [get-label "Name:"] | set-text "bdd diagram"
+    get-button OK | click
+}
+get-editor "bdd diagram"
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

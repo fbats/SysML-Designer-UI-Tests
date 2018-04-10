@@ -1,0 +1,20 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: BDD_OpenBddDiagram
+Element-Type: context
+Element-Version: 2.0
+Id: _-LLTYDQqEeiRde_P_PIz8w
+Runtime-Version: 2.2.0.201705230341
+Save-Time: 3/30/18 4:59 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Open diagram
+get-view "Model Explorer" | get-tree | select "test/model.uml/<Model> Model/bdd diagram" | get-menu -path Open | click
+
+// Check diagram is opened
+get-editor "bdd diagram" | get-diagram -index 1 | get-edit-part -name "bdd diagram"
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

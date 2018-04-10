@@ -1,0 +1,33 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _sD67UDMzEeiRZ4kXU2JqQQ,_dzmbEDNZEeiRZ4kXU2JqQQ,_T3lvoDMyEeiRZ4kXU2JqQQ,_Z_ds0DMyEeiRZ4kXU2JqQQ,_cwlwoDMyEeiRZ4kXU2JqQQ,_b0KIUDNYEeiRZ4kXU2JqQQ,_cJcPQDNtEeiRZ4kXU2JqQQ
+Element-Name: BDD_CreateEnumerationWithPaletteTool
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _iIvY4DNlEeiRZ4kXU2JqQQ
+Runtime-Version: 2.2.0.201705230341
+Save-Time: 3/29/18 7:35 PM
+Testcase-Type: ecl
+Verifications: _b8BigDNmEeiRZ4kXU2JqQQ
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Create a Enumeration in BDD   with the tool Types/Enumeration
+- create Enumeration on the diagram back side
+
+TODO : create an Enumeration in a package
+
+
+Expected result: 
+- an Enumeration is displayed in diagram
+- a new Enumeration is created in Model
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

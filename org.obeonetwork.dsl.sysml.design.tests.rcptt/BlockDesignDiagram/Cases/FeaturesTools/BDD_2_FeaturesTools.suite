@@ -1,0 +1,23 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Element-Name: BDD_2_FeaturesTools
+Element-Type: testsuite
+Element-Version: 2.0
+Id: _AOqiQDN0EeiRZ4kXU2JqQQ
+Runtime-Version: 2.2.0.201705230341
+Save-Time: 3/29/18 7:57 PM
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
+Content-Type: text/testcase
+Entry-Name: testcase-items
+
+_uPBb8DNqEeiRZ4kXU2JqQQ	// kind: 'test' name: 'BDD_CreateFeatureActivityWithPaletteTool' path: 'BDD_CreateFeatureActivityWithPaletteTool.test'
+_P7Z3ADNrEeiRZ4kXU2JqQQ	// kind: 'test' name: 'BDD_CreateFeatureStateMachineWithPaletteTool' path: 'BDD_CreateFeatureStateMachineWithPaletteTool.test'
+_yNyiIDNrEeiRZ4kXU2JqQQ	// kind: 'test' name: 'BDD_CreateFeatureTypedPropertyWithPaletteTool' path: 'BDD_CreateFeatureTypedPropertyWithPaletteTool.test'
+_VxJQcDNtEeiRZ4kXU2JqQQ	// kind: 'test' name: 'BDD_CreateFeatureLiteralWithPaletteTool' path: 'BDD_CreateFeatureLiteralWithPaletteTool.test'
+_9OXnwDN4EeiRZ4kXU2JqQQ	// kind: 'test' name: 'BDD_CreateFeatureUnitWithPaletteTool' path: 'BDD_CreateFeatureUnitWithPaletteTool.test'
+_AwNUoDNqEeiRZ4kXU2JqQQ	// kind: 'test' name: 'BDD_CreateFeatureOperationWithPaletteTool' path: 'BDD_CreateFeatureOperationWithPaletteTool.test'
+_0Iv2IDNvEeiRZ4kXU2JqQQ	// kind: 'test' name: 'BDD_CreateFeatureDimensionWithPaletteTool' path: 'BDD_CreateFeatureDimensionWithPaletteTool.test'
+_VqMioDNnEeiRZ4kXU2JqQQ	// kind: 'test' name: 'BDD_CreateFeaturePropertyWithPaletteTool' path: 'BDD_CreateFeaturePropertyWithPaletteTool.test'
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--

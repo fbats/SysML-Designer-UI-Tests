@@ -1,0 +1,17 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Element-Name: IBD_Parent
+Element-Type: testsuite
+Element-Version: 2.0
+Id: _2gFKkDQXEeiRde_P_PIz8w
+Runtime-Version: 2.2.0.201705230341
+Save-Time: 3/30/18 3:37 PM
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
+Content-Type: text/testcase
+Entry-Name: testcase-items
+
+_uAcr0DQXEeiRde_P_PIz8w	// kind: 'suite' name: 'IBD_1_Features' path: 'Cases/Features/IBD_1_Features.suite'
+_XdT8cDQfEeiRde_P_PIz8w	// kind: 'suite' name: 'IBD_2_Connector' path: 'Cases/Connections/IBD_2_Connector.suite'
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--

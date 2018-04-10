@@ -1,0 +1,30 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Element-Name: BDD_1_TypesTools
+Element-Type: testsuite
+Element-Version: 2.0
+Id: _gXv0ADNzEeiRZ4kXU2JqQQ
+Runtime-Version: 2.2.0.201705230341
+Save-Time: 3/29/18 7:11 PM
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Test The Block diagram creation tools for Types
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
+Content-Type: text/testcase
+Entry-Name: testcase-items
+
+_1oaXQDNdEeiRZ4kXU2JqQQ	//
+_46Vr8DNmEeiRZ4kXU2JqQQ	//
+__Q3jQDMxEeiRZ4kXU2JqQQ	//
+_PMlNsDNhEeiRZ4kXU2JqQQ	//
+_iIvY4DNlEeiRZ4kXU2JqQQ	//
+_yugDgDNgEeiRZ4kXU2JqQQ	//
+_pK208DNeEeiRZ4kXU2JqQQ	//
+_kuIjQDNkEeiRZ4kXU2JqQQ	//
+_JqlhkDNdEeiRZ4kXU2JqQQ	//
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--

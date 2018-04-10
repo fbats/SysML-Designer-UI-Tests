@@ -1,0 +1,54 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _sD67UDMzEeiRZ4kXU2JqQQ,_dzmbEDNZEeiRZ4kXU2JqQQ,_T3lvoDMyEeiRZ4kXU2JqQQ,_Z_ds0DMyEeiRZ4kXU2JqQQ,_cwlwoDMyEeiRZ4kXU2JqQQ,_b0KIUDNYEeiRZ4kXU2JqQQ,_aeGWgDNnEeiRZ4kXU2JqQQ
+Element-Name: BDD_CreateFeatureOperationWithPaletteTool
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _AwNUoDNqEeiRZ4kXU2JqQQ
+Runtime-Version: 2.2.0.201705230341
+Save-Time: 3/30/18 9:55 AM
+Testcase-Type: ecl
+Verifications: _Ff26oDNqEeiRZ4kXU2JqQQ
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Create operation in BDD with the tool Feature/Operation
+
+- create an operation on a block
+
+TODO : create a property on interface
+
+Expected result:
+- operation displayed in Block
+- operation created under semantic Block
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Create Property in Block with tool Property
+with [get-editor "bdd diagram"] {
+    with [get-palette] {
+        with [get-palette-entry Operation] {
+            mouse-move 100 11 button1 -height 27 -width 293
+            mouse-press 100 11 button1 -height 27 -width 293
+            mouse-release 100 11 button1 524288 -height 27 -width 293
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "bdd diagram" | get-edit-part -name "«Block»\r\n"
+        + "blockcustom1" | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+        mouse-move 127 31 button1 -height 182 -width 207
+        mouse-press 127 31 button1 -height 182 -width 207
+        mouse-release 127 31 button1 524288 -height 182 -width 207
+    }
+}
+
+// Check graphical element is displayed
+get-editor "bdd diagram" | get-diagram -index 1 | get-edit-part -name "bdd diagram" | get-edit-part -name "«Block»\r\n"
+            + "blockcustom1" | get-edit-part -className DNodeListViewNodeListCompartment2EditPart |get-edit-part -name "operation1()"
+// Save Diagram
+get-button "Save (M1+S)" | click
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

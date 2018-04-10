@@ -1,0 +1,55 @@
+language: java
+jdk: oraclejdk7
+env:
+  global:
+  - DISPLAY=:99.0
+  - RUNNER=rcptt.runner-2.0.1.zip
+  - "ARTIFACTS_AWS_REGION=eu-west-1"
+  - secure: "eL3WrAnaqVJtnb8QdgIakybhNgMmS+s5pd2JbwRXWib1vxGs3S1zCvGn/yO6jpsu+95qIe+lWNPuoRm+vWYvcQzapw4NJhrDCj2Rj5Z8aQCr12Zb0hx8eZPFHbOunVZZSKG3tzGLNBM8bTF4OGDT3iN4ZrKXXiEMm5HLukvLRhDCbhVQ3Cn/n+ytdCV70QvTauArHgeCqu+0gimp8XKcfILFaWkUoimqskNni98KLigY4i+DR9/rfL0122QJ5CEV5TfX6awrFsoBq4vV9CB5sKQD3J89qD2thSfoIUCuOCoBqdWwtNUNMELSZiovJsjqwMEfqTlXxhOQ/RCkhJTpjePoBCPhqhYUu9hnTSEFhFQkBMlwv5Yh8RYCK5OOKXC4UbPcttMX0zxEwfWf3H3ZLzB5LJ1nZ9qx1nbloLCCt3BoF5K18yh67SJCvTCnBYsnDPAlfFV7Qa1ojDCc15S/gizyulKvT2RrRcUWbsBYzhk0DdoXCFbhbrQcnzw/ielGeBeAq3hzQs61wwNHTSuT6ZnUHcfgZeRIOIeTnsLOtfFmXxMtwvrhjYvzWCMLwe/mDAFauTcdMuvqEZCNIP02TB33C2xHdPp2+uZxO2+t/TG95Qu1lu7qwpbW6VL81Q8Zvbnelodu2Nsjp0OKfAOdr2kygyYR93dUshySDiu7k/U="
+  - secure: "gVZRU8tcVXuHWDtC8lusAi5ttNJmQfDqcnfpoVbALiKaGEFm5+YtEloCPeQWMcFJF9lXbOAZS3jue/KkQyRQcqNSRcJcmzXgUosOlG7eukH73VNUVIfZzW9xQvoTOvo+07y2Cx9zW/1hZ4hcZwXA6CsebSUQEzQfapvh9VjKr7HiPRBywB1NfmM4d6GjaPkzbMrtRzP61328OwgHwiFnf+9gz/iPVKI2GdseDDkPpUtoQ4KrN9n0/jWnG3Zq/YN01SlnKhfKWQGEhyrvbJgpq+udGS3uQ/NHv+O4bjW2geLkIeC2gtcPRyc5epKOwBD9zvG4EKxDdcTRosWHZw2i863wjyPBHHO3bU+9n8hyOTWEHzUcQwfiWTFgHCU/lMlEvX4xzFtA7I2E341cbnemylp0p3jtV/fIg6tCDcgvfSDQTyl9yY8qf1YGlMySzhj/p7vnbTk3oczkL2N5NhyiX5RjEJP1Pl2s4D2zK77Mu+VKrABsgqdZivyicrpdpL/ojFxk25t/dOxy/csl+tsmdKh9f+gReVodlW9K4vYXGEER04wrMovLUIfG8tLj5+C+zoBa8g+WnDrGsGXP1sWOewVzJiEgXQzZZshGBYwycudrW8290rDREQGakrjoUpibLaX3ekocElFJSsfaTKAwQCtGnd21hhgUjppCUl80Pd4="
+  matrix:
+  - TEST_SUITE=SysMl_Parent
+before_install:
+- rvm install 2.2.3
+install: true
+sudo: false
+cache:
+  directories:
+  - $HOME/.m2
+addons:
+  apt:
+    packages:
+    - metacity
+before_script:
+ - "gem install travis-artifacts"
+ - export SWT_GTK3=0
+ - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1440x900x16
+ - sh -e /etc/init.d/xvfb start
+ - sleep 10
+ - metacity --sm-disable --replace &
+ - sleep 10
+ - wget -mN http://obeo-umldesigner-nightly.s3.amazonaws.com/releng/$RUNNER
+ - echo $TRAVIS_TAG
+ - if [[ "$TRAVIS_TAG" == "" ]]; then AUT=../obeo-umldesigner-nightly.s3.amazonaws.com/${TRAVIS_BRANCH}/bundles/UMLDesigner-linux.gtk.x86_64.zip;
+   else AUT=../obeo-umldesigner-releases.s3.amazonaws.com/${TRAVIS_TAG}/UMLDesigner-linux.gtk.x86_64.zip;fi
+ - echo $AUT
+ 
+ Faut recuperer UML2
+ http://www.eclipse.org/downloads/download.php?file=/modeling/mdt/uml2/downloads/drops/5.3.0/R201706051616/mdt-uml2-Update-5.3.0.zip&mirror_id=1190
+ faut modifier la suite pour faire un WGET sur le site de capella vesion 1.2.0 (http://download.polarsys.org/capella/core/products/releases/1.2.0-R20171103-050121/capella-1.2.0.201711030906-win32-win32-x86_64.zip)
+ 
+ faut wget de sirius pour la feature property http://download.eclipse.org/sirius/updates/releases/5.1.1/org.eclipse.sirius-5.1.1-neon.zip
+ 
+ - if [[ "$TRAVIS_TAG" == "" ]]; then wget -mN http://obeo-umldesigner-nightly.s3.amazonaws.com/${TRAVIS_BRANCH}/bundles/UMLDesigner-linux.gtk.x86_64.zip;
+   else wget -mN http://obeo-umldesigner-releases.s3.amazonaws.com/${TRAVIS_TAG}/UMLDesigner-linux.gtk.x86_64.zip;fi
+script:
+ - mvn clean test -f org.obeonetwork.dsl.sysml.design.tests.rcptt/pom.xml -Daut=$AUT -Drcpttrunner=../obeo-umldesigner-nightly.s3.amazonaws.com/releng/$RUNNER -Dsuite=$TEST_SUITE
+after_failure:
+  - echo $TRAVIS_TAG
+  - if [[ "$TRAVIS_TAG" == "" ]]; then export ARTIFACTS_S3_BUCKET=obeo-umldesigner-nightly;
+   else export ARTIFACTS_S3_BUCKET=obeo-umldesigner-releases;fi
+  - if [[ "$TRAVIS_TAG" == "" ]]; then export TARGET_PATH=${TRAVIS_BRANCH}/test-results/$TRAVIS_JOB_NUMBER;
+   else export TARGET_PATH=${TRAVIS_TAG}/test-results/$TRAVIS_JOB_NUMBER;fi
+  - echo $ARTIFACTS_S3_BUCKET
+  - echo $TARGET_PATH
+  - "travis-artifacts upload --path ${TRAVIS_BUILD_DIR}/org.obeonetwork.dsl.uml2.tests.rcptt/target/results -t $TARGET_PATH"

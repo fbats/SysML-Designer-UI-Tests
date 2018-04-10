@@ -1,0 +1,31 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _sD67UDMzEeiRZ4kXU2JqQQ,_dzmbEDNZEeiRZ4kXU2JqQQ,_T3lvoDMyEeiRZ4kXU2JqQQ,_Z_ds0DMyEeiRZ4kXU2JqQQ,_Y_B8wDPxEeiRde_P_PIz8w,_YjKqsDPyEeiRde_P_PIz8w,_Fk4e8DP2EeiRde_P_PIz8w
+Element-Name: IBD_CreatePart
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _MOOuUDPyEeiRde_P_PIz8w
+Runtime-Version: 2.2.0.201705230341
+Save-Time: 3/30/18 11:15 AM
+Testcase-Type: ecl
+Verifications: _iwTswDP1EeiRde_P_PIz8w
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Create a part in IBD with the tool Features/Part
+- create part on the ibd diagram
+
+Expected result: 
+- a part is displayed in diagram
+- a new element part is created in Model
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Save Diagram
+get-button "Save (M1+S)" | click
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

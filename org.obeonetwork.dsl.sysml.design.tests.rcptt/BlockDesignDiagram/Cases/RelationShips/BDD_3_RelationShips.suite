@@ -1,0 +1,21 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Element-Name: BDD_3_RelationShips
+Element-Type: testsuite
+Element-Version: 2.0
+Id: _1PTE4DQnEeiRde_P_PIz8w
+Runtime-Version: 2.2.0.201705230341
+Save-Time: 4/3/18 4:16 PM
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
+Content-Type: text/testcase
+Entry-Name: testcase-items
+
+_XHjG0DQqEeiRde_P_PIz8w	// kind: 'test' name: 'BDD_CreateAssociation' path: 'Cases/BDD_CreateAssociation.test'
+_YFQ5kDcaEeiI5Obnayse1w	// kind: 'test' name: 'BDD_CreateAggregation' path: 'Cases/BDD_CreateAggregation.test'
+_WhZvkDcZEeiI5Obnayse1w	// kind: 'test' name: 'BDD_CreateComposition' path: 'Cases/BDD_CreateComposition.test'
+_LIZFYDcYEeiI5Obnayse1w	// kind: 'test' name: 'BDD_CreateDependecy' path: 'Cases/BDD_CreateDependecy.test'
+_qAl64DcTEeiI5Obnayse1w	// kind: 'test' name: 'BDD_CreateGeneralization' path: 'Cases/BDD_CreateGeneralization.test'
+_Ygp1gDQvEeiRde_P_PIz8w	// kind: 'test' name: 'BDD_CreateInterfaceRealization' path: 'Cases/BDD_CreateInterfaceRealization.test'
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--

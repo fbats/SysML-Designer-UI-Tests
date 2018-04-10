@@ -1,0 +1,119 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _sD67UDMzEeiRZ4kXU2JqQQ,_dzmbEDNZEeiRZ4kXU2JqQQ,_T3lvoDMyEeiRZ4kXU2JqQQ,_Z_ds0DMyEeiRZ4kXU2JqQQ,_l318EDQOEeiRde_P_PIz8w
+Element-Name: IBD_NestedPort
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _fdqgMDQJEeiRde_P_PIz8w
+Runtime-Version: 2.2.0.201705230341
+Save-Time: 4/9/18 10:40 AM
+Testcase-Type: ecl
+Verifications: _aAWakDQXEeiRde_P_PIz8w
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Load a project with already created ports
+A part with ports and nested ports
+a Block with ports and nested ports
+
+Expected result: 
+all ports and nested ports are displayed
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Open IBD Diagram
+/*get-view "Model Explorer" | get-tree | select "test/model.uml/<Model> Model/<<Block>> <Class> block1/ibd diagram" 
+    | get-menu -path Open | click*/
+get-view "Model Explorer" | get-tree | select test | get-menu -path Refresh | click
+with [get-view "Model Explorer" | get-tree] {
+    select test | get-menu -path Refresh | click
+    select test | double-click
+    select "*test/model.uml/<Model> Model/<<Block>> <Class> block1/ibd diagram" 
+    | get-menu -path Open | click
+}
+
+//Check diagram is opened
+get-editor "ibd diagram" | get-diagram -index 1 | get-edit-part -name "ibd diagram" | get-edit-part -name "ibd diagram"
+
+// Save Diagram
+get-button "Save (M1+S)" | click
+
+// Check port belonging to part
+get-editor "ibd diagram" | get-diagram -index 1 | get-edit-part -name "ibd diagram" | get-edit-part -name "ibd diagram"
+	| get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name "part1 : block2 [1]"
+	| get-edit-part -name "Block2Port1 : block3"
+get-editor "ibd diagram" | get-diagram -index 1 | get-edit-part -name "ibd diagram" | get-edit-part -name "ibd diagram"
+	| get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name "part1 : block2 [1]"
+	| get-edit-part -name "«FlowPort» flowportcustom1 : block3"
+get-editor "ibd diagram" | get-diagram -index 1 | get-edit-part -name "ibd diagram" | get-edit-part -name "ibd diagram"
+	| get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name "part1 : block2 [1]"
+	| get-edit-part -name "«ProxyPort» port3 : block3"
+
+// Check NestedPort
+get-editor "ibd diagram" | get-diagram -index 1 | get-edit-part -name "ibd diagram" | get-edit-part -name "ibd diagram" 
+	| get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name "part1 : block2 [1]"
+	| get-edit-part -name "Block2Port1 : block3" | get-edit-part -name "Bloc3port1 : "
+get-editor "ibd diagram" | get-diagram -index 1 | get-edit-part -name "ibd diagram" | get-edit-part -name "ibd diagram" 
+	| get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name "part1 : block2 [1]"
+	| get-edit-part -name "Block2Port1 : block3" | get-edit-part -name "«ProxyPort» Blck3proxyport2 : "
+get-editor "ibd diagram" | get-diagram -index 1 | get-edit-part -name "ibd diagram" | get-edit-part -name "ibd diagram" 
+	| get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name "part1 : block2 [1]"
+	| get-edit-part -name "Block2Port1 : block3" | get-edit-part -name "«FlowPort» Blck3flowport3 : "
+
+	
+get-editor "ibd diagram" | get-diagram -index 1 | get-edit-part -name "ibd diagram" | get-edit-part -name "ibd diagram"
+	| get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name "part1 : block2 [1]"
+	| get-edit-part -name "«FlowPort» flowportcustom1 : block3" | get-edit-part -name "Bloc3port1 : "
+get-editor "ibd diagram" | get-diagram -index 1 | get-edit-part -name "ibd diagram" | get-edit-part -name "ibd diagram"
+	| get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name "part1 : block2 [1]"
+	| get-edit-part -name "«FlowPort» flowportcustom1 : block3" | get-edit-part -name "«ProxyPort» Blck3proxyport2 : "
+get-editor "ibd diagram" | get-diagram -index 1 | get-edit-part -name "ibd diagram" | get-edit-part -name "ibd diagram"
+	| get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name "part1 : block2 [1]"
+	| get-edit-part -name "«FlowPort» flowportcustom1 : block3" | get-edit-part -name "«FlowPort» Blck3flowport3 : "
+	
+	
+get-editor "ibd diagram" | get-diagram -index 1 | get-edit-part -name "ibd diagram" | get-edit-part -name "ibd diagram"
+	| get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name "part1 : block2 [1]"
+	| get-edit-part -name "«ProxyPort» port3 : block3" | get-edit-part -name "Bloc3port1 : "
+get-editor "ibd diagram" | get-diagram -index 1 | get-edit-part -name "ibd diagram" | get-edit-part -name "ibd diagram"
+	| get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name "part1 : block2 [1]"
+	| get-edit-part -name "«ProxyPort» port3 : block3" | get-edit-part -name "«ProxyPort» Blck3proxyport2 : "
+get-editor "ibd diagram" | get-diagram -index 1 | get-edit-part -name "ibd diagram" | get-edit-part -name "ibd diagram"
+	| get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name "part1 : block2 [1]"
+	| get-edit-part -name "«ProxyPort» port3 : block3" | get-edit-part -name "«FlowPort» Blck3flowport3 : "
+	
+// Check ports on diagram block
+get-editor "ibd diagram" | get-diagram -index 1 | get-edit-part -name "ibd diagram" | get-edit-part -name "ibd diagram" 
+	| get-edit-part -name "port1 : block3"
+get-editor "ibd diagram" | get-diagram -index 1 | get-edit-part -name "ibd diagram" | get-edit-part -name "ibd diagram" 
+	| get-edit-part -name  "«ProxyPort» port2 : block3"
+get-editor "ibd diagram" | get-diagram -index 1 | get-edit-part -name "ibd diagram" | get-edit-part -name "ibd diagram" 
+	| get-edit-part -name "«FlowPort» flowportcustom1 : block3"
+
+// Check nested ports on diagram block
+get-editor "ibd diagram" | get-diagram -index 1 | get-edit-part -name "ibd diagram" | get-edit-part -name "ibd diagram" 
+	| get-edit-part -name "port1 : block3" | get-edit-part -name "Bloc3port1 : "
+get-editor "ibd diagram" | get-diagram -index 1 | get-edit-part -name "ibd diagram" | get-edit-part -name "ibd diagram" 
+	| get-edit-part -name "port1 : block3" | get-edit-part -name "«ProxyPort» Blck3proxyport2 : "
+get-editor "ibd diagram" | get-diagram -index 1 | get-edit-part -name "ibd diagram" | get-edit-part -name "ibd diagram" 
+	| get-edit-part -name "port1 : block3" | get-edit-part -name "«FlowPort» Blck3flowport3 : "
+	
+get-editor "ibd diagram" | get-diagram -index 1 | get-edit-part -name "ibd diagram" | get-edit-part -name "ibd diagram" 
+	| get-edit-part -name  "«ProxyPort» port2 : block3" | get-edit-part -name "Bloc3port1 : "
+get-editor "ibd diagram" | get-diagram -index 1 | get-edit-part -name "ibd diagram" | get-edit-part -name "ibd diagram" 
+	| get-edit-part -name  "«ProxyPort» port2 : block3" | get-edit-part -name "«ProxyPort» Blck3proxyport2 : "
+get-editor "ibd diagram" | get-diagram -index 1 | get-edit-part -name "ibd diagram" | get-edit-part -name "ibd diagram" 
+	| get-edit-part -name  "«ProxyPort» port2 : block3" | get-edit-part -name "«FlowPort» Blck3flowport3 : "
+
+get-editor "ibd diagram" | get-diagram -index 1 | get-edit-part -name "ibd diagram" | get-edit-part -name "ibd diagram" 
+	| get-edit-part -name "«FlowPort» flowportcustom1 : block3" | get-edit-part -name "Bloc3port1 : "
+get-editor "ibd diagram" | get-diagram -index 1 | get-edit-part -name "ibd diagram" | get-edit-part -name "ibd diagram" 
+	| get-edit-part -name "«FlowPort» flowportcustom1 : block3" | get-edit-part -name "«ProxyPort» Blck3proxyport2 : "
+get-editor "ibd diagram" | get-diagram -index 1 | get-edit-part -name "ibd diagram" | get-edit-part -name "ibd diagram" 
+	| get-edit-part -name "«FlowPort» flowportcustom1 : block3" | get-edit-part -name "«FlowPort» Blck3flowport3 : "
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

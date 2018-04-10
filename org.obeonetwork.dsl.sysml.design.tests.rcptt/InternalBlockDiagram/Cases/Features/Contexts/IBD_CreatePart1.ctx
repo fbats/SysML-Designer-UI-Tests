@@ -1,0 +1,38 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: IBD_CreatePart1
+Element-Type: context
+Element-Version: 2.0
+Id: _Fk4e8DP2EeiRde_P_PIz8w
+Runtime-Version: 2.2.0.201705230341
+Save-Time: 3/30/18 10:41 AM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Create a part
+with [get-editor "ibd diagram"] {
+    with [get-palette] {
+        with [get-palette-entry Part] {
+            mouse-press 64 11 button1 -height 27 -width 293
+            mouse-release 64 11 button1 524288 -height 27 -width 293
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "ibd diagram" | get-edit-part -name "ibd diagram" | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        mouse-move 78 80 button1 -height 397 -width 715
+        mouse-press 78 80 button1 -height 397 -width 715
+        mouse-release 78 80 button1 524288 -height 397 -width 715
+    }
+}
+// Set part type as Block2
+with [get-window "Selection Wizard"] {
+    get-tree | select "<<Block>> <Class> block2"
+    get-button Finish | click
+}
+// Check Part is displayed
+get-editor "ibd diagram"|get-diagram -index 1 | get-edit-part -name "ibd diagram"|get-edit-part -name "ibd diagram" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart|get-edit-part -name "part1 : block2 [1]"
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
